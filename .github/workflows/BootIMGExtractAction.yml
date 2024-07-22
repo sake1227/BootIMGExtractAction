@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       rom_url:
-        description: 'ROM 下载直链'
+        description: '下载直链'
         required: true
         default: ''
       baocunname:
-        description: '保存名字'
+        description: '输出名称'
         required: true
         default: ''
 
