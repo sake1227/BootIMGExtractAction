@@ -7,7 +7,10 @@ on:
         description: 'ROM 下载直链'
         required: true
         default: ''
-
+      baocunname:
+        description: '保存名字'
+        required: true
+        default: ''
 
 jobs:
   YIJIANTIQU:
@@ -42,9 +45,10 @@ jobs:
           du -h --total *.img | sed 's/^/提取镜像大小： /' | head -n 1 >> ${{ github.workspace }}/info.md
 
       - name: 上传镜像及相关信息
-        uses: ncipollo/release-action@v1.12.0
+        uses: ncipollo/release-action@v1.14.0
         with:
             artifacts: "~/Firmware_extractor/out/*"
+            name: "${{ github.event.inputs.baocunname }}"
             bodyfile: "${{ github.workspace }}/info.md"
             tag: "OUTPUT_${{ env.BUILD_TIME }}_${{ github.run_id }}"
             token: ${{ secrets.GITHUB_TOKEN }}
