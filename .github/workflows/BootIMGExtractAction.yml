@@ -3,16 +3,6 @@ name: 提取
 on:
   workflow_dispatch:
     inputs:
-      boot:
-        description: 'boot'
-        required: false
-        default: false
-        type: boolean
-      init_boot:
-        description: 'init_boot'
-        required: false
-        default: false
-        type: boolean
       rom_url:
         description: 'ROM 下载直链'
         required: true
@@ -43,15 +33,7 @@ jobs:
 
       - name: 提取镜像
         run: |
-          partitions=("")
-          [[ "${{ github.event.inputs.boot }}" == "true" ]] && partitions+=("boot")
-          [[ "${{ github.event.inputs.init_boot }}" == "true" ]] && partitions+=("init_boot")
-          if [ ${#partitions[@]} -eq 0 ]; then 
-            echo "请选择至少一个分区类型！"
-            exit 1
-          fi
-          partitions_string=$(IFS=, ; echo "${partitions[*]}")
-          python3 ${{ github.workspace }}/payload-dumper/payload_dumper/dumper.py --partitions $partitions_string ${{ github.event.inputs.rom_url }}
+          python3 ${{ github.workspace }}/payload-dumper/payload_dumper/dumper.py --partitions boot ${{ github.event.inputs.rom_url }}
 
       - name: 生成信息
         run: |
