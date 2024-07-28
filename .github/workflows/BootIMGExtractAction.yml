@@ -33,7 +33,7 @@ jobs:
 
       - name: 提取镜像
         run: |
-          python3 ${{ github.workspace }}/payload-dumper/payload_dumper/dumper.py --partitions boot ${{ github.event.inputs.rom_url }}
+          python3 ${{ github.workspace }}/payload-dumper/src/payload_dumper/dumper.py --partitions boot ${{ github.event.inputs.rom_url }}
 
       - name: 生成信息
         run: |
