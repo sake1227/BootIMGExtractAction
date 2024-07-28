@@ -1,4 +1,4 @@
-name: extract_partition
+name: 提取
 
 on:
   workflow_dispatch:
@@ -26,7 +26,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: 检出代码
-        uses: actions/checkout@v2
+        uses: actions/checkout@vmain
 
       - name: 缓存依赖
         uses: actions/cache@v2
@@ -65,7 +65,7 @@ jobs:
           done
 
       - name: 上传文件
-        uses: ncipollo/release-action@v1.12.0
+        uses: ncipollo/release-action@v1.14.0
         with:
             artifacts: "${{ github.workspace }}/output/*"
             name: "${{ github.event.inputs.baocunname }}"
