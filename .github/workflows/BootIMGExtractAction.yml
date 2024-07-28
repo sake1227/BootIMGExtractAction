@@ -28,19 +28,6 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@main
 
-      - name: 缓存依赖
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirement.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      - name: 安装依赖
-        run: |
-          git clone --single-branch --depth=1 https://github.com/5ec1cff/payload-dumper
-          cd payload-dumper && pip3 install -r requirement.txt
-
       - name: 提取镜像
         run: |
           partitions=()
