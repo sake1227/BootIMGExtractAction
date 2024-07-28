@@ -18,9 +18,8 @@ jobs:
 
       - name: 安装依赖
         run: |
-          sudo apt-get update
-          sudo apt-get -y install python3-pip
-          sudo apt install aria2 liblzma-dev brotli lz4
+          pip -y install python3-pip
+          pip install aria2 liblzma-dev brotli lz4
           pip3 install backports.lzma pycrypto
           pip install protobuf==3.20
           BUILD_TIME=$(TZ=Asia/Shanghai date +"%m%d%H%M")
