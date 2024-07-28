@@ -43,7 +43,7 @@ jobs:
 
       - name: 提取镜像
         run: |
-          partitions=()
+          partitions=("")
           [[ "${{ github.event.inputs.boot }}" == "true" ]] && partitions+=("boot")
           [[ "${{ github.event.inputs.init_boot }}" == "true" ]] && partitions+=("init_boot")
           if [ ${#partitions[@]} -eq 0 ]; then 
