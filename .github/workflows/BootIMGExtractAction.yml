@@ -38,7 +38,7 @@ jobs:
 
       - name: 安装依赖
         run: |
-          git clone --single-branch --depth=1 https://github.com/5ec1cff/payload-dumper
+          git clone --single-branch --depth=1 https://github.com/sake1227/payload-dumper.git
           cd payload-dumper && pip3 install -r requirement.txt
 
       - name: 提取镜像
