@@ -20,6 +20,14 @@ on:
         description: '输出名称'
         required: true
         default: ''
+
+jobs:
+  extract_partition:
+    runs-on: self-hosted
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@main
+
       - name: 缓存依赖
         uses: actions/cache@v2
         with:
@@ -32,13 +40,6 @@ on:
         run: |
           git clone --single-branch --depth=1 https://github.com/5ec1cff/payload-dumper
           cd payload-dumper && pip3 install -r requirement.txt
-          
-jobs:
-  extract_partition:
-    runs-on: self-hosted
-    steps:
-      - name: 检出代码
-        uses: actions/checkout@main
 
       - name: 提取镜像
         run: |
