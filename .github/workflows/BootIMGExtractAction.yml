@@ -45,3 +45,7 @@ jobs:
             bodyfile: "${{ github.workspace }}/info.md"
             tag: "OUTPUT_${{ env.BUILD_TIME }}_${{ github.run_id }}"
             token: ${{ secrets.GITHUB_TOKEN }}
+      - name: shamc
+        run:
+         cd ~
+         sudo rm -rf Firmware_extractor
